@@ -1,227 +1,103 @@
-# GUIA COMPLETO QUE INCLUI INSERÇÃO E CONSULTA DE DADOS 
+# SQL
+
+## Operadores 
+
+   * **Lógicos** and or not = <> != < <= > >=
+
+   * **Númericos, inteiros e reais:** + - * / % ^ between
+
+##  Funções Numéricas
+
+   * min(x), max(x), abs(x), div(x, y), mod(x, y), ceil(x), floor(x), round(x), trunc(x), exp(x), ln(x), log(x), power(x, y), sqrt(x), random(), sin(x), cos(x), tan(x), asin(x), acos(x), atan(x), degrees(x), radians(x) e etc.
+
+## Funções para Strings
+
+   * length(x), lower(x), upper(x), trim(x), strpos(x, y), substr(x, y), substr(x, y, z), replace(x, y, z), repeat(x, y), translate(x, y, z) md5(x), to_char(x, y) e etc.
+
+## Principais Tipos de Dados - PostgreSQL
+
+* _**boolean:**_ booleano lógico
+* _**character varying(n):**_ cadeia de caracteres de comprimento variável
+* _**character(n):**_ cadeia de caracteres de comprimento fixo
+* _**date:**_ data
+* _**double precision:**_ número de ponto flutuante de precisão dupla
+* _**integer:**_ número inteiro de 4 bytes com sinal
+* _**money:**_ quantia monetária
+* _**numeric(p,s):**_ númerico com precisão selecionável
+* _**real:**_ número de ponto flutuante de precisão simples
+* _**serial:**_ número inteiro de 4 bytes auto-incrementado
+
+## [JSON](https://www.postgresqltutorial.com/postgresql-tutorial/postgresql-json/)
+  * https://www.postgresqltutorial.com/postgresql-tutorial/postgresql-json/
+  * https://www.enterprisedb.com/blog/processing-postgresql-json-jsonb-data-java
+  * https://www.baeldung.com/gson-exclude-fields-serialization
+
+
+## Type
 
 ```sql
--- Inserir dados na superclasse
-INSERT INTO Veiculo (placa, ano) VALUES ('ABC1234', 2020);
+CREATE TYPE tamanho AS ENUM ('pequena', 'media', 'grande');
 
--- Inserir dados nas subclasses
-INSERT INTO Carro (placa, ano, numero_portas) VALUES ('DEF5678', 2021, 4);
-INSERT INTO Moto (placa, ano, cilindradas) VALUES ('GHI9012', 2022, 150);
-
--- Consultar dados da superclasse (inclui dados das subclasses)
-SELECT * FROM Veiculo;
-
--- Consultar dados apenas da superclasse
-SELECT * FROM ONLY Veiculo;
+CREATE TABLE residencias (
+    id SERIAL PRIMARY KEY,
+    cidade VARCHAR(50) NOT NULL,
+    bairro VARCHAR(50) NOT NULL,
+    rua VARCHAR(100) NOT NULL,
+    complemento VARCHAR(50),
+    numero VARCHAR(10) NOT NULL,
+    tamanho tamanho NOT NULL
+);
 ```
 
-Como no SELECT, os comando UPDATE e DELETE também suportam o uso do "ONLY".
+## **Conversão de Tipos (cast)**
 
-Essa abordagem permite modelar de forma eficiente hierarquias de entidades no PostgreSQL, mantendo a flexibilidade e a integridade dos dados.
+```sql
+select cast('true' as boolean);
+select cast('12' as integer);
+select cast('12.34' as real);
+select cast('2000-12-31' as date);
+select cast('12:00:00' as time);
+select cast('2000-12-31 12:00:00' as timestamp);
+select cast('3 months 10 days' as interval);
+select cast(false as integer);
+select cast(12.34 as integer);
+```
 
-**Links:**
+## **CREATE DATABASE**
 
-(1) Herança no PostgreSQL - DevMedia. https://www.devmedia.com.br/heranca-no-postgresql/10847.
+```sql
+CREATE DATABASE banco;
+```
 
-(2) Banco de dados: Generalização e especialização na Modelagem Conceitual. https://blog.grancursosonline.com.br/banco-de-dados-generalizacao-e-especializacao-na-modelagem-conceitual/.
+## **CREATE TABLE**
+ ```sql
+create table tabela2 (
+	campo1 serial primary key,
+	campo2 real default 0,
+	campo3 varchar(100),
+	campo4 date default current_date
+);
+```
+## CHECK
 
-(3) Banco de Dados II: Generalização e Especialização (aula 3). https://pt.slideshare.net/slideshow/banco-de-dados-ii-generalizao-e-especializao-aula-3/57053731.
+```sql
+CREATE TABLE products (
+  product_no integer,
+  name text DEFAULT 'Igor',
+  -- valores da coluna "price" não podem ser nulos (NOT NULL) e devem ser maior que zero (CHECK (price > 0))
+  price numeric NOT NULL CHECK (price > 0)
+);
+```
 
-(4) BANCO DE DADOS - docente.ifrn.edu.br. https://docente.ifrn.edu.br/elieziosoares/disciplinas/programacao-com-acesso-a-banco-de-dados/4-especializacao-entidade_associativa.
+## GENERATED ALWAYS
 
+https://www.postgresql.org/docs/current/ddl-generated-columns.html
+
+https://www.tutorialsteacher.com/postgresql/generated-always
+
+https://www.postgresqltutorial.com/postgresql-tutorial/postgresql-generated-columns/
 
 ***
-# Stored Procedure
-
-Procedimento armazenado ou Stored Procedure é uma coleção de comandos em SQL, que podem ser executadas em um Banco de dados de uma só vez, como em uma função
-
-```sql
-CREATE FUNCTION soma(text, text) RETURNS char AS
-$$
-DECLARE
- resultado text;
-BEGIN
- resultado := $1 || $2;
- return resultado;
-END;
-$$ LANGUAGE 'plpgsql';
-```
-
-```sql
-CREATE OR REPLACE FUNCTION clientesComMaisPedidos() RETURNS TABLE (cliente_id int) AS
-$$
-BEGIN
-       RETURN QUERY SELECT cliente.id FROM cliente inner join pedido on (cliente.id = pedido.cliente_id) group by cliente.id having count(*) = (SELECT count(*) FROM cliente inner join pedido on (cliente.id = pedido.cliente_id) group by cliente.id ORDER BY COUNT(*) DESC LIMIT 1);
-END;
-$$ LANGUAGE 'plpgsql';
-```
-
-***
-
-## TEMP TABLE 
-
-```sql
-CREATE OR REPLACE PROCEDURE listar_amigos_secretos(evento_id_param INTEGER)
-LANGUAGE plpgsql
-AS $$
-DECLARE
-    participante_record RECORD;
-BEGIN
-    IF NOT EXISTS (SELECT 1 FROM eventos WHERE id = evento_id_param) THEN
-        RAISE EXCEPTION 'Evento com ID % não encontrado.', evento_id_param;
-    END IF;
-
-    CREATE TEMPORARY TABLE IF NOT EXISTS temp_amigos_secretos (
-        participante VARCHAR(255),
-        amigo_secreto VARCHAR(255)
-    ) ON COMMIT DROP;
-
-    TRUNCATE temp_amigos_secretos;
-
-    INSERT INTO temp_amigos_secretos (participante, amigo_secreto)
-    SELECT 
-        p.nome AS participante,
-        a.nome AS amigo_secreto
-    FROM 
-        participantes p
-    LEFT JOIN 
-        participantes a ON p.amigo_id = a.id
-    WHERE 
-        p.evento_id = evento_id_param
-    ORDER BY 
-        p.nome;
-
-    FOR participante_record IN (SELECT * FROM temp_amigos_secretos)
-    LOOP
-        RAISE NOTICE 'Participante: %, Amigo Secreto: %', 
-                     participante_record.participante, 
-                     COALESCE(participante_record.amigo_secreto, 'Não atribuído');
-    END LOOP;
-
-    IF NOT FOUND THEN
-        RAISE NOTICE 'Nenhum participante encontrado para o evento %', evento_id_param;
-    END IF;
-END;
-$$;
-```
-
-
-***
-
-# Trigger
-
-```sql
--- criando uma função/stored procedure que retorna uma trigger
-CREATE OR REPLACE FUNCTION processa_empregados_audit() RETURNS TRIGGER AS
-$$
-BEGIN
-    IF (TG_OP = 'DELETE') THEN
-        INSERT INTO empregados_audit (operacao, usuario, data, nome)
-            VALUES ('E', USER, NOW(), OLD.nome);
-        RETURN OLD;    
-    ELSIF (TG_OP = 'UPDATE') THEN
-         INSERT INTO empregados_audit (operacao, usuario, data, nome)
-            VALUES ('A', USER, NOW(), NEW.nome);
-        RETURN NEW;
-    ELSIF (TG_OP = 'INSERT') THEN
-        INSERT INTO empregados_audit (operacao, usuario, data, nome)
-            VALUES ('I', USER, NOW(), NEW.nome);
-        RETURN NEW;
-    END IF;
-    RETURN NULL;
-END;
-$$ LANGUAGE 'plpgsql'; 
-
--- definindo comportamento de gatilho
-CREATE TRIGGER empregados_audit AFTER INSERT OR UPDATE OR DELETE ON empregados FOR EACH ROW EXECUTE PROCEDURE processa_empregados_audit();
-```
-
-*** 
-
-# DCL
-
-## Criar um Usuário
-
-```sql
-1) CREATE ROLE name;
-CREATE ROLE name [ [ WITH ] option [ ... ] ]
-      SUPERUSER | NOSUPERUSER
-    | CREATEDB | NOCREATEDB
-    | CREATEROLE | NOCREATEROLE
-    | INHERIT | NOINHERIT
-    | LOGIN | NOLOGIN
-    | REPLICATION | NOREPLICATION
-    | BYPASSRLS | NOBYPASSRLS
-    | CONNECTION LIMIT connlimit
-    | [ ENCRYPTED ] PASSWORD 'password' | PASSWORD NULL
-    | VALID UNTIL 'timestamp'
-    | IN ROLE role_name [, ...]
-    | IN GROUP role_name [, ...]
-    | ROLE role_name [, ...]
-    | ADMIN role_name [, ...]
-    | USER role_name [, ...]
-    | SYSID uid
-2) CREATE USER name [ [ WITH ] option [ ... ] ]
-      SUPERUSER | NOSUPERUSER
-    | CREATEDB | NOCREATEDB
-    | CREATEROLE | NOCREATEROLE
-    | INHERIT | NOINHERIT
-    | LOGIN | NOLOGIN
-    | REPLICATION | NOREPLICATION
-    | BYPASSRLS | NOBYPASSRLS
-    | CONNECTION LIMIT connlimit
-    | [ ENCRYPTED ] PASSWORD 'password' | PASSWORD NULL
-    | VALID UNTIL 'timestamp'
-    | IN ROLE role_name [, ...]
-    | IN GROUP role_name [, ...]
-    | ROLE role_name [, ...]
-    | ADMIN role_name [, ...]
-    | USER role_name [, ...]
-    | SYSID uid
-```
-
-## Remover um Usuário
-```sql
-1) DROP ROLE name;
-2) DROP USER name;
-```
-
-## Renomear um Usuário
-
-```sql
-ALTER USER <nome_antigo_usuario>
-  RENAME TO <nome_novo_usuario>;
-```
-
-## Listar Usuários
-```sql
-SELECT rolname FROM pg_roles;
-```
-
-## Usuário com Login
-
-```sql
-1) CREATE ROLE name LOGIN;
-2) CREATE USER name;
-```
-
-## Usuário Superuser
-
-```sql
-1) CREATE ROLE name SUPERUSER
-2) CREATE USER name SUPERUSER
-```
-
-## Usuário com Capacidade de Criar BD's
-
-```sql
-CREATE ROLE name CREATEDB
-```
-
-## Usuário que Pode Criar/Alterar outros Usuários/papéis 
-
-```sql
-CREATE ROLE name CREATEROLE
-```
-
-## Usuário com Senha
+* _**text:**_ cadeia de caracteres de comprimento variável
+* _**timestamp:**_ data e hora
+* _**time:**_ hora
