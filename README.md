@@ -52,8 +52,8 @@ Os **resumos teóricos, mapas conceituais e anotações detalhadas** da cadeira 
 
 **Lucas Oliveira**  
 Estudante de **Análise e Desenvolvimento de Sistemas / Ciências da Computação (2024–2029)**  
-Universidade Anhanguera — Brasil
-Instituto Federal de Educação, Ciência e Tecnologia do Rio Grande do Sul — Brasil  
+  * Universidade Anhanguera — Brasil
+  * Instituto Federal de Educação, Ciência e Tecnologia do Rio Grande do Sul — Brasil  
 
 📍 *Interesse em Banco de Dados, Desenvolvimento Web e Análise de Sistemas.*  
 📧 [Acesse meu GitHub para mais Projetos 👋]
