@@ -43,7 +43,7 @@ Os **resumos teóricos, mapas conceituais e anotações detalhadas** da cadeira 
 
 ## 📘 Relacionado
 
-- [Guia Completo de PostgreSQL no Linux com pgAdmin e VS Code](../README_PostgreSQL.md)
+- [Guia Completo de PostgreSQL no Linux com pgAdmin e VS Code](https://github.com/aalucas/Modelagem_De_Dados_TADS/tree/main/Prova-%201/Postgres)
 - [Projetos e Exercícios de Banco de Dados e Modelagem Prática nos Demais Repositórios]
 
 ---
