@@ -1,6 +1,6 @@
 # 🧩 Modelagem de Dados — Resumo da Disciplina
 
-Este repositório reúne materiais e estudos desenvolvidos na disciplina **Modelagem de Dados**, pertencente ao curso de **Ciência da Computação**.  
+Este repositório reúne materiais e estudos desenvolvidos na disciplina **Modelagem de Dados**, pertencente ao curso de **Ciência da Computação** e **Análise e Desenvolvimento de Sistemas**.  
 O conteúdo aqui apresentado tem como objetivo documentar o aprendizado prático, especialmente o uso do **PostgreSQL**, **pgAdmin** e **Visual Studio Code (VS Code)** em ambiente **Linux (Pop!_OS)**.
 
 ---
