@@ -39,25 +39,23 @@ Os **resumos teóricos, mapas conceituais e anotações detalhadas** da cadeira 
 
 🔗 **Acesse aqui:** [Resumos da Cadeira no Notion](https://www.notion.so/Projeto-e-Modelagem-de-Banco-de-Dados-2457c6764d48806f86c7ec81c5f0efe4?source=copy_link)
 
-*(Substitua o link acima pelo seu link real do Notion quando estiver pronto.)*
-
 ---
 
 ## 📘 Relacionado
 
 - [Guia Completo de PostgreSQL no Linux com pgAdmin e VS Code](../README_PostgreSQL.md)
-- [Projetos de Banco de Dados e Modelagem Prática](#)
+- [Projetos e Exercícios de Banco de Dados e Modelagem Prática nos Demais Repositórios]
 
 ---
 
 ## ✍️ Autor
 
 **Lucas Oliveira**  
-Estudante de **Ciências da Computação (2024–2028)**  
+Estudante de **Análise e Desenvolvimento de Sistemas / Ciências da Computação (2024–2029)**  
 Universidade Anhanguera — Brasil  
 
 📍 *Interesse em Banco de Dados, Desenvolvimento Web e Análise de Sistemas.*  
-📧 [Seu e-mail opcional ou GitHub Profile Link]
+📧 [Acesse meu GitHub para mais Projetos 👋]
 
 ---
 
