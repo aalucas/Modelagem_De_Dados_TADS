@@ -18,7 +18,9 @@ CREATE TABLE Clientes(
 
 -- Insere um cliente inicial
 INSERT INTO Clientes (nome, email) VALUES
-('João Silva', ' joaosilva@gmail.com');
+('João Silva', ' joaosilva@gmail.com'),
+('Lucas Oliveira', 'lucas.luki3007@gmail.com'),
+('Igor Avila Pereira', 'igor.pereira@riogrande.ifrs.edu.br');
 
 -- Cria tabela de Planos com campos id, nome e valor mensal
 CREATE TABLE Plano(
@@ -30,7 +32,8 @@ CREATE TABLE Plano(
 -- Insere planos básico e premium
 INSERT INTO Plano (nome, valor_mensal) VALUES
 ('Plano Básico', '50.00'),
-('Plano Premium', '100.00');
+('Plano Premium', '100.00'),
+('Plano Gold', '200.00');
 
 -- Cria tabela de relacionamento entre Cliente e Plano
 CREATE TABLE Cliente_Plano(
@@ -43,8 +46,10 @@ CREATE TABLE Cliente_Plano(
 
 -- Associa o cliente 1 ao plano 1
 INSERT INTO Cliente_Plano (cliente_id, plano_id) VALUES
-(1, 1);
-
+(1, 1),
+(2, 2,),
+(3, 3);
+    
 -- Cria tabela de Instrutores
 CREATE TABLE Instrutor(
     id serial PRIMARY KEY,
@@ -55,6 +60,10 @@ CREATE TABLE Instrutor(
 -- Insere um instrutor inicial
 INSERT INTO Instrutor (nome) VALUES
 ('Carlos Pereira');
+('Felipe Franco');
+('Bambam');
+('Renato Cariani');
+('Julio')
 
 -- Cria tabela de Aulas
 CREATE TABLE Aula(
@@ -67,7 +76,8 @@ CREATE TABLE Aula(
 -- Insere aulas iniciais de Yoga e Pilates
 INSERT INTO Aula (nome, horario, instrutor_id) VALUES
 ('Yoga', '08:00:00', 1),
-('Pilates', '10:00:00', 1);
+('Pilates', '10:00:00', 1),
+('Musculação', '12:00:00', 2);
 
 -- Cria tabela de relacionamento entre Cliente e Aula
 CREATE TABLE Cliente_Aula(
@@ -81,6 +91,8 @@ CREATE TABLE Cliente_Aula(
 -- Registra presença do cliente 1 na aula 1
 INSERT INTO Cliente_Aula (Cliente_id, Aula_id, presente) VALUES
 (1, 1, TRUE);
+(2, 2, TRUE),
+(3, 2, FALSE);
 
 -- Operações de Consulta e Manipulação
 
