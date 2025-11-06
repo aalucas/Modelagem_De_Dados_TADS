@@ -29,7 +29,7 @@ O conteúdo foi construído a partir de estudos práticos realizados no sistema 
 
 ## 📦 1. Instalação do PostgreSQL e pgAdmin
 
-### 🔹 Instalar PostgreSQL##
+### 🔹 Instalar PostgreSQL ###
 No terminal, execute:
 ``` 
 sudo apt update
