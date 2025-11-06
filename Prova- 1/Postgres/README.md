@@ -31,7 +31,7 @@ O conteúdo foi construído a partir de estudos práticos realizados no sistema 
 
 ### 🔹 Instalar PostgreSQL
 No terminal, execute:
-```bash
+``` 
 sudo apt update
 sudo apt install postgresql postgresql-contrib
 
@@ -49,7 +49,7 @@ sudo systemctl start postgresql
 
 sudo -i -u postgres
 psql
-
+```
 👤 2. Gerenciamento de Usuários e Acesso
 
 Dentro do terminal psql, é possível configurar usuários e permissões.
