@@ -29,7 +29,7 @@ O conteúdo foi construído a partir de estudos práticos realizados no sistema 
 
 ## 📦 1. Instalação do PostgreSQL e pgAdmin
 
-### 🔹 Instalar PostgreSQL
+### 🔹 Instalar PostgreSQL##
 No terminal, execute:
 ``` 
 sudo apt update
@@ -50,7 +50,7 @@ sudo systemctl start postgresql
 sudo -i -u postgres
 psql
 ```
-👤 2. Gerenciamento de Usuários e Acesso
+## 👤 2. Gerenciamento de Usuários e Acesso
 
 Dentro do terminal psql, é possível configurar usuários e permissões.
 🔸 Criar um novo usuário
@@ -73,7 +73,7 @@ GRANT ALL PRIVILEGES ON DATABASE nome_banco TO nome_usuario;
 
 \q
 
-🧭 3. Configuração e Uso do pgAdmin
+## 🧭 3. Configuração e Uso do pgAdmin
 
 O pgAdmin é a interface gráfica oficial do PostgreSQL, utilizada para gerenciar bancos de dados, usuários e executar consultas SQL.
 🔹 Instalar pgAdmin
@@ -108,7 +108,7 @@ Após a instalação:
 
     Monitorar conexões e desempenho do servidor.
 
-💻 4. Programando em PostgreSQL pelo VS Code
+## 💻 4. Programando em PostgreSQL pelo VS Code
 
 Além do pgAdmin, é possível programar e executar comandos SQL diretamente no VS Code.
 🔸 Extensão necessária
@@ -151,7 +151,7 @@ Você também pode escrever scripts SQL diretamente em arquivos .sql e executá-
 
 psql -U nome_usuario -d nome_banco -f script.sql
 
-⚙️ 5. Boas Práticas
+## ⚙️ 5. Boas Práticas
 
     Sempre defina usuários específicos para cada aplicação.
 
@@ -163,14 +163,14 @@ psql -U nome_usuario -d nome_banco -f script.sql
 
     Use comentários e scripts versionados (.sql) para manter histórico de alterações no GitHub.
 
-🧩 6. Ferramentas Envolvidas
+## 🧩 6. Ferramentas Envolvidas
 Ferramenta	Função	Plataforma
 PostgreSQL	Sistema de gerenciamento de banco de dados relacional (SGBD)	Linux
 pgAdmin 4	Interface gráfica de administração do PostgreSQL	Linux / Web
 VS Code	Editor de código integrado para SQL, Python, JS e outras linguagens	Multiplataforma
 Extensão PostgreSQL	Conexão direta ao banco dentro do VS Code	Marketplace
 
-📘 7. Exemplo de Estrutura de Banco
+## 📘 7. Exemplo de Estrutura de Banco
 
 CREATE TABLE usuarios (
     id SERIAL PRIMARY KEY,
@@ -184,14 +184,14 @@ VALUES ('Lucas Oliveira', 'lucas@email.com');
 
 SELECT * FROM usuarios;
 
-⚙️ 8. Boas Práticas
+## ⚙️ 8. Boas Práticas
 - Use roles/usuários específicos por aplicação.
 - Versione scripts SQL no Git.
 - Use transações para operações críticas (BEGIN / COMMIT / ROLLBACK).
 - Defina índices conforme necessidade de consulta.
 - Documente mudanças de esquema com comentários e CHANGELOG.
 
-🧠 Conclusão
+## 🧠 Conclusão
 
 Com essa configuração, o ambiente Linux se torna completamente integrado ao PostgreSQL, permitindo gerenciar bancos de dados via pgAdmin e desenvolver queries SQL diretamente no VS Code, combinando praticidade, controle e eficiência.
 Esse fluxo é ideal para estudantes, analistas e desenvolvedores que desejam dominar a administração e manipulação de dados em ambientes PostgreSQL.
