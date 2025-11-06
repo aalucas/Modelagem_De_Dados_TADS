@@ -153,15 +153,15 @@ psql -U nome_usuario -d nome_banco -f script.sql
 
 ## ⚙️ 5. Boas Práticas
 
-    Sempre defina usuários específicos para cada aplicação.
+    * Sempre defina usuários específicos para cada aplicação.
 
-    Evite usar o superusuário postgres em produção.
+    * Evite usar o superusuário postgres em produção.
 
-    Realize backups regulares com:
+    * Realize backups regulares com:
 
-    pg_dump nome_banco > backup.sql
+    * pg_dump nome_banco > backup.sql
 
-    Use comentários e scripts versionados (.sql) para manter histórico de alterações no GitHub.
+    * Use comentários e scripts versionados (.sql) para manter histórico de alterações no GitHub.
 
 ## 🧩 6. Ferramentas Envolvidas
 Ferramenta	Função	Plataforma
