@@ -15,9 +15,8 @@ O conteúdo foi construído a partir de estudos práticos realizados no sistema 
 - [Comandos SQL Básicos](#-comandos-sql-básicos)
 - [Troubleshooting](#-troubleshooting)
 - [Boas Práticas](#-5-boas-práticas)
-- [Como Contribuir](#-como-contribuir)
-- [Licença](#-licença)
-- [Referências](#-referências)
+- [Ferramentas Envolvidas](#-6-ferramentas-envolvidas).
+- [Boas Práticas](#7-boas-práticas).
 
 ## 📋 Requisitos de Sistema
 - Distribuição Linux (Ubuntu 20.04+ recomendado)
