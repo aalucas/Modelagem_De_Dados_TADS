@@ -52,7 +52,8 @@ psql
 ```
 ## 👤 2. Gerenciamento de Usuários e Acesso
 
-Dentro do terminal psql, é possível configurar usuários e permissões.
+###Dentro do terminal psql, é possível configurar usuários e permissões.###
+```
 🔸 Criar um novo usuário
 
 CREATE USER nome_usuario WITH PASSWORD 'senha';
@@ -72,7 +73,7 @@ GRANT ALL PRIVILEGES ON DATABASE nome_banco TO nome_usuario;
 🔸 Sair do psql
 
 \q
-
+```
 ## 🧭 3. Configuração e Uso do pgAdmin
 
 O pgAdmin é a interface gráfica oficial do PostgreSQL, utilizada para gerenciar bancos de dados, usuários e executar consultas SQL.
