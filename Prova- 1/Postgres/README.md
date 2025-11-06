@@ -153,15 +153,15 @@ psql -U nome_usuario -d nome_banco -f script.sql
 
 ## ⚙️ 5. Boas Práticas
 
-    * Sempre defina usuários específicos para cada aplicação.
+    - Sempre defina usuários específicos para cada aplicação.
 
-    * Evite usar o superusuário postgres em produção.
+    - Evite usar o superusuário postgres em produção.
 
-    * Realize backups regulares com:
+    - Realize backups regulares com:
 
-    * pg_dump nome_banco > backup.sql
+    - pg_dump nome_banco > backup.sql
 
-    * Use comentários e scripts versionados (.sql) para manter histórico de alterações no GitHub.
+    - Use comentários e scripts versionados (.sql) para manter histórico de alterações no GitHub.
 
 ## 🧩 6. Ferramentas Envolvidas
 Ferramenta	Função	Plataforma
@@ -171,7 +171,7 @@ VS Code	Editor de código integrado para SQL, Python, JS e outras linguagens	Mul
 Extensão PostgreSQL	Conexão direta ao banco dentro do VS Code	Marketplace
 
 ## 📘 7. Exemplo de Estrutura de Banco
-
+```
 CREATE TABLE usuarios (
     id SERIAL PRIMARY KEY,
     nome VARCHAR(100) NOT NULL,
@@ -183,6 +183,7 @@ INSERT INTO usuarios (nome, email)
 VALUES ('Lucas Oliveira', 'lucas@email.com');
 
 SELECT * FROM usuarios;
+```
 
 ## ⚙️ 8. Boas Práticas
 - Use roles/usuários específicos por aplicação.
