@@ -37,7 +37,7 @@ O ambiente utilizado para os estudos foi o **Pop!_OS (Linux)**, com o seguinte c
 
 Os **resumos teóricos, mapas conceituais e anotações detalhadas** da cadeira de **Modelagem de Dados** estão disponíveis no meu Notion, com acesso no link abaixo:
 
-🔗 **Acesse aqui:** [Resumos da Cadeira no Notion](https://www.notion.so/Projeto-e-Modelagem-de-Banco-de-Dados-2457c6764d48806f86c7ec81c5f0efe4?source=copy_link)
+🔗 **Acesse aqui:** [Resumos da Cadeira no Notion](https://www.notion.so/3057c6764d48808ea350ee2b292cdbc9?v=3057c6764d488152852c000c8342eaf8&source=copy_link)
 
 ---
 
