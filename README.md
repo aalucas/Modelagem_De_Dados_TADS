@@ -56,7 +56,7 @@ Estudante de **Análise e Desenvolvimento de Sistemas / Ciências da Computaçã
   * Instituto Federal de Educação, Ciência e Tecnologia do Rio Grande do Sul — Brasil  
 
 📍 *Interesse em Banco de Dados, Desenvolvimento Web e Análise de Sistemas.*  
-📧 [Acesse meu GitHub para mais Projetos 👋]
+📧 [Acesse meu GitHub para mais Projetos 👋](https://github.com/Dev-Lucius)
 
 ---
 
